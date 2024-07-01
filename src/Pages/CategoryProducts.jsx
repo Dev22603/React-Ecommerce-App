@@ -8,7 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 function CategoryProducts() {
 	const [products, setProducts] = useState([]);
 	const { category } = useParams();
-
+	const navigate = useNavigate();
 	useEffect(() => {
 		const getProductData = async () => {
 			try {
@@ -24,7 +24,7 @@ function CategoryProducts() {
 		};
 
 		getProductData();
-	}, [ category ] );
+	}, [category]);
 	useEffect(() => {
 		if (localStorage.getItem("login") !== "true") {
 			navigate("/");
@@ -34,7 +34,9 @@ function CategoryProducts() {
 	return (
 		<>
 			<Navbar />
-			{products.length > 0 && <CategoryProductList product_list={products} category={category} />}
+			{products.length > 0 && (
+				<CategoryProductList product_list={products} category={category} />
+			)}
 		</>
 	);
 }
