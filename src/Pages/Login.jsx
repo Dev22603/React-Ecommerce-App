@@ -11,8 +11,14 @@ const initialValues = {
 	email: "",
 	password: "",
 };
+import logo from "../assets/logo.png";
 
-import { ToastContainer, toast } from "react-toastify";
+// import hidePng from "../assets/hide-password-512.png";
+// import showPng from "../assets/show-password-3-512.png";
+import hideSvg from "../assets/hide-password.svg";
+import showSvg from "../assets/show-password-3.svg";
+
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Function to encrypt data
@@ -42,7 +48,7 @@ function Login() {
 			localStorage.getItem("login") &&
 			localStorage.getItem("login_user")
 		) {
-			navigate('/Home');
+			navigate("/Home");
 			// navigate(`/user/${localStorage.getItem("login_user")}`);
 		}
 	}, []);
@@ -60,7 +66,7 @@ function Login() {
 					const username = values.email.split("@")[0];
 
 					localStorage.setItem("login_user", username);
-					localStorage.setItem( "login", "true" );
+					localStorage.setItem("login", "true");
 					toast.success("Logging in!", {
 						position: "top-right",
 						autoClose: 3000,
@@ -101,12 +107,12 @@ function Login() {
 						className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
 					>
 						<img
-							className="w-[300px] mr-2"
-							src="src\assets\findit-high-resolution-logo-transparent.png"
+							className="w-[200px] mr-2"
+							src={logo}
 							alt="logo"
 						/>
 					</Link>
-					<div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+					<div className="w-full bg-white rounded-lg shadow-lg dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
 						<div className="p-6 space-y-4 md:space-y-6 sm:p-8">
 							<h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
 								Sign in to your account
@@ -132,11 +138,7 @@ function Login() {
 											onChange={handleChange}
 											onBlur={handleBlur}
 										/>
-										{/* {touched.email && errors.email && (
-											<p className="text-red-600 font text-sm">
-												{errors.email}
-											</p>
-										)} */}
+
 										<p className="text-red-600 font text-sm">
 											{touched.email && errors.email ? errors.email : "\u00A0"}
 										</p>
@@ -156,7 +158,7 @@ function Login() {
 												name="password"
 												id="password"
 												placeholder="••••••••"
-												className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+												className="pr-12 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 												required=""
 												value={values.password}
 												onChange={handleChange}
@@ -169,12 +171,12 @@ function Login() {
 											>
 												{showPassword ? (
 													<img
-														src="src\assets\show-password-3.svg"
+														src={showSvg}
 														className="h-7"
 													/>
 												) : (
 													<img
-														src="src\assets\hide-password-512.png"
+														src={hideSvg}
 														className="h-7"
 													/>
 												)}

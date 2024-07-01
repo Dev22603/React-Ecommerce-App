@@ -24,7 +24,13 @@ function CategoryProducts() {
 		};
 
 		getProductData();
-	}, [category]);
+	}, [ category ] );
+	useEffect(() => {
+		if (localStorage.getItem("login") !== "true") {
+			navigate("/");
+			// navigate(`/user/${localStorage.getItem("login_user")}`);
+		}
+	}, []);
 	return (
 		<>
 			<Navbar />

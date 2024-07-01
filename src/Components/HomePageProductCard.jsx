@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import CartContext from "../context/CartContext";
 
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 function HomePageProductCard({ item }) {
 	const { cart, Decrement, Increment, removeFromCart, addToCart } =
@@ -76,7 +76,24 @@ function HomePageProductCard({ item }) {
 			) : (
 				<button
 					type="button"
-					onClick={() => addToCart(item)}
+					onClick={() => {
+						if (localStorage.getItem("login") !== "true") {
+							toast.success("User not Logged in", {
+								position: "top-right",
+								autoClose: 1000,
+								hideProgressBar: false,
+								closeOnClick: true,
+								pauseOnHover: true,
+								draggable: true,
+								progress: undefined,
+								onClose: () => {
+									navigate("/");
+								},
+							});
+						} else {
+							addToCart(item);
+						}
+					}}
 					className=" inline-flex w-5/6 mb-1 items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium  text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
 				>
 					<svg

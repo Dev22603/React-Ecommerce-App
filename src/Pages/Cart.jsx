@@ -1,12 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext,useEffect } from "react";
 import CartCard from "../Components/CartCard";
 import Recommendations from "../Components/Recommendations";
 import Navbar from "../Components/Navbar";
 
 import OrderSummary from "../Components/OrderSummary";
+import { useNavigate } from "react-router-dom";
 function Cart() {
-
-
+	const navigate = useNavigate();
+	useEffect(() => {
+		if (localStorage.getItem("login") !== "true") {
+			navigate("/");
+			// navigate(`/user/${localStorage.getItem("login_user")}`);
+		}
+	}, []);
 	return (
 		<div>
 			<Navbar />
@@ -31,7 +37,6 @@ function Cart() {
 
 						<div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
 							<OrderSummary></OrderSummary>
-							
 
 							<div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
 								<form className="space-y-4">
@@ -65,7 +70,6 @@ function Cart() {
 			</section>
 		</div>
 	);
-
 }
 
 export default Cart;

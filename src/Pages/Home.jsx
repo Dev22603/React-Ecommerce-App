@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import Navbar from "../Components/Navbar";
 import Topdeals from "../Components/Topdeals";
-
 export function Home() {
 	const [products, setProducts] = useState([]);
 	const [categories, setCategories] = useState([]);
@@ -29,7 +28,14 @@ export function Home() {
 
 		getProductData();
 	}, []);
-
+	useEffect(() => {
+		if (
+			localStorage.getItem("login") !== "true"
+		) {
+			navigate("/");
+			// navigate(`/user/${localStorage.getItem("login_user")}`);
+		}
+	}, []);
 
 	return (
 		<>

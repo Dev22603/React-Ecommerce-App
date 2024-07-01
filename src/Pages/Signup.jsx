@@ -6,8 +6,13 @@ import { signUpSchema } from "../schemas/signupSchema";
 import { useState } from "react";
 import CryptoJS from "crypto-js";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+// import hidePng from "../assets/hide-password-512.png";
+// import showPng from "../assets/show-password-3-512.png";
+import hideSvg from "../assets/hide-password.svg";
+import showSvg from "../assets/show-password-3.svg";
+import logo from "../assets/logo.png";
 
 const initialValues = {
 	name: "",
@@ -163,13 +168,9 @@ function Signup() {
 						to="#"
 						className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
 					>
-						<img
-							className="w-[300px] mr-2"
-							src="src\assets\findit-high-resolution-logo-transparent.png"
-							alt="logo"
-						/>
+						<img className="w-[200px] mr-2 pt-5" src={logo} alt="logo" />
 					</Link>
-					<div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+					<div className="w-full bg-white rounded-lg shadow-lg dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
 						<div className="p-6 space-y-4 md:space-y-6 sm:p-8">
 							<h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
 								Create an account
@@ -194,11 +195,7 @@ function Signup() {
 											onChange={handleChange}
 											onBlur={handleBlur}
 										/>
-										{/* {touched.name && errors.name && (
-											<p className="text-red-600 font text-xs pl-3 pt-1">
-												{errors.name}
-											</p>
-											)} */}
+
 										<p className="text-red-600 font text-xs pl-3 pt-1">
 											{touched.name && errors.name ? errors.name : "\u00A0"}
 										</p>
@@ -223,11 +220,7 @@ function Signup() {
 											onChange={handleChange}
 											onBlur={handleBlur}
 										/>
-										{/* {touched.email && errors.email && (
-											<p className="text-red-600 font text-xs pl-3 pt-1">
-												{errors.email}
-											</p>
-										)} */}
+
 										<p className="text-red-600 font text-xs pl-3 pt-1">
 											{touched.email && errors.email ? errors.email : "\u00A0"}
 										</p>
@@ -247,7 +240,7 @@ function Signup() {
 												name="password"
 												id="password"
 												placeholder="••••••••"
-												className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+												className="pr-12 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 												required=""
 												value={values.password}
 												onChange={handleChange}
@@ -259,23 +252,13 @@ function Signup() {
 												onClick={togglePasswordVisibility}
 											>
 												{showPassword ? (
-													<img
-														src="src\assets\show-password-3.svg"
-														className="h-7"
-													/>
+													<img src={showSvg} className="h-7" />
 												) : (
-													<img
-														src="src\assets\hide-password-512.png"
-														className="h-7"
-													/>
+													<img src={hideSvg} className="h-7" />
 												)}
 											</button>
 										</div>
-										{/* {touched.password && errors.password && (
-											<p className="text-red-600 font text-xs pl-3 pt-1">
-												{errors.password}
-											</p>
-										)} */}
+
 										<p className="text-red-600 font text-xs pl-3 pt-1">
 											{touched.password && errors.password
 												? errors.password
@@ -298,7 +281,7 @@ function Signup() {
 												name="confirm_password"
 												id="confirm_password"
 												placeholder="••••••••"
-												className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+												className="pr-12 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 												required=""
 												value={values.confirm_password}
 												onChange={handleChange}
@@ -310,23 +293,13 @@ function Signup() {
 												onClick={toggleCPasswordVisibility}
 											>
 												{showCPassword ? (
-													<img
-														src="src\assets\show-password-3.svg"
-														className="h-7"
-													/>
+													<img src={showSvg} className="h-7" />
 												) : (
-													<img
-														src="src\assets\hide-password-512.png"
-														className="h-7"
-													/>
+													<img src={hideSvg} className="h-7" />
 												)}
 											</button>
 										</div>
-										{/* {touched.confirm_password && errors.confirm_password && (
-											<p className="text-red-600 font text-xs pl-3 pt-1">
-												{errors.confirm_password}
-											</p>
-										) } */}
+
 										<p className="text-red-600 font text-xs pl-3 pt-1">
 											{touched.confirm_password && errors.confirm_password
 												? errors.confirm_password
