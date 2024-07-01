@@ -85,7 +85,10 @@ function CartContextProvider({ children }) {
 						: product
 				);
 			} else {
-				toast.success("Added to Cart");
+				toast.success( "Added to Cart", {
+					position: "top-right",
+					autoClose: 1000,
+				});
 				console.log("hi");
 				return [...prevCart, { ...newProduct, quantity: 1 }];
 			}
@@ -134,7 +137,14 @@ function CartContextProvider({ children }) {
 	return (
 		<>
 			<CartContext.Provider
-				value={{ cart, addToCart, Decrement, Increment, removeFromCart }}
+				value={{
+					cart,
+					addToCart,
+					Decrement,
+					Increment,
+					removeFromCart,
+					clearCart,
+				}}
 			>
 				{children}
 			</CartContext.Provider>

@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import CartContext from "../context/CartContext";
 
 function OrderSummary() {
-	const { cart, Decrement, Increment, removeFromCart } =
+	const { cart, Decrement, Increment, removeFromCart, clearCart } =
 		useContext(CartContext);
 	const navigate = useNavigate();
 	const [OriginalPrice, setOriginalPrice] = useState(0);
@@ -33,13 +33,14 @@ function OrderSummary() {
 	const handleCheckout = () => {
 		toast.success("Order Placed", {
 			position: "top-right",
-			autoClose: 3000,
+			autoClose: 2000,
 			hideProgressBar: false,
 			closeOnClick: true,
 			pauseOnHover: true,
 			draggable: true,
 			progress: undefined,
 			onClose: () => {
+				clearCart();
 				console.log("Redirecting to login page...");
 				navigate("/Home");
 			},
